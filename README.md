@@ -1,1 +1,3 @@
-# leapp
+# LEΛPP
+
+If you're reading this mind ur own buisness
