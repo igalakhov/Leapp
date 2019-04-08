@@ -1,3 +1,3 @@
 # LEΛPP
 
-If you're reading this mind ur own buisness
+If you're reading this mind ur own business
