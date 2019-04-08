@@ -19,15 +19,17 @@ class User(db.Model):
     username = db.Column(db.String(127), unique=True, nullable=False)
     email = db.Column(db.String(127), unique=True, nullable=False)
     password = db.Column(db.String(127), nullable=False)
+    email_consent = db.Column(db.Boolean, nullable=False, default=False)
 
     # relationships
 
-    def __init__(self, first, last, username, email, password):
+    def __init__(self, first: str, last: str, username: str, email: str, password: str, consent: bool):
         self.first = first
         self.last = last
         self.username = username
         self.email = email
         self.password = bcrypt.encrypt(password)
+        self.consent = consent
 
     def validate_password(self, password):
         return bcrypt.verify(password, self.password)
