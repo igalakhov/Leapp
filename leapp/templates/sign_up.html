@@ -1,0 +1,52 @@
+{% extends "_base.html" %}
+{% from "_macros.html" import render_field %}
+
+{% block content %}
+
+    <br><br>
+    <div class="row">
+        <div class="col-1"><br></div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title text-center">
+                        <h3>Sign Up for LEΛPP</h3>
+                    </div>
+                    <br>
+                    <form method="post">
+                        {{ sign_up_form.hidden_tag() }}
+                        <div class="row">
+                            <div class="col">
+                                {{ render_field(sign_up_form.first_name) }}
+                            </div>
+                            <div class="col">
+                                {{ render_field(sign_up_form.last_name) }}
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                {{ render_field(sign_up_form.password) }}
+                            </div>
+                            <div class="col">
+                                {{ render_field(sign_up_form.password_confirm) }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                {{ render_field(sign_up_form.email)}}
+                            </div>
+                        </div>
+                        {{ render_field(sign_up_form.email_confirm)}}
+
+                        {{ render_field(sign_up_form.submit) }}
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-1"><br></div>
+    </div>
+
+{% endblock content %}
