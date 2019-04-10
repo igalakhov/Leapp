@@ -14,7 +14,11 @@
                     </div>
                     <br>
                     <form method="post">
+                        {{ log_in_form.csrf_token }}
 
+                        {{ render_field(log_in_form.email) }}
+                        {{ render_field(log_in_form.password) }}
+                        {{ render_field(log_in_form.submit) }}
                     </form>
 
                 </div>

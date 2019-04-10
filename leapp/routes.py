@@ -1,5 +1,6 @@
 from flask import Flask, render_template, flash, redirect, Blueprint
 from leapp.forms.sign_up import SignUpForm
+from leapp.forms.log_in import LogInForm
 from leapp.models.models import User
 from leapp.models import db
 
@@ -40,6 +41,7 @@ def signup():
             db.session.commit()
 
             flash('New account created! Log in below.', 'success')
+            return redirect('/login')
 
     elif len(form.errors) > 0 or not valid_data:
         flash('Please correct the errors below.', 'danger')
@@ -51,6 +53,11 @@ def signup():
 
 @thing.route('/login', methods=["GET", "POST"])
 def log_in():
+    form = LogInForm()
+
+    if form.validate_on_submit():
+        flash('Cool form dude', 'success')
 
     return render_template('log_in.html',
-                           title='Log In')
+                           title='Log In',
+                           log_in_form=form)
