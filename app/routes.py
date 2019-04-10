@@ -1,8 +1,8 @@
 from flask import Flask, render_template, flash, redirect, Blueprint
-from leapp.forms.sign_up import SignUpForm
-from leapp.forms.log_in import LogInForm
-from leapp.models.models import User
-from leapp.models import db
+from app.forms.sign_up import SignUpForm
+from app.forms.log_in import LogInForm
+from app.models.models import User
+from app.models import db
 
 
 thing = Blueprint('thing', __name__)

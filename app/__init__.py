@@ -1,18 +1,21 @@
 from config import *
-from leapp.models import db
+from app.models import db
 from flask import Flask
-from leapp.routes import thing
+from app.routes import thing
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = SECRET_KEY
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = SQLALCHEMY_TRACK_MODIFICATIONS
 
 # db.init_app(app)
 #
 # with app.app_context():
 #     db.drop_all()
 #     db.create_all()
+
+migrate = Migrate(app, db)
 
 app.register_blueprint(thing)
