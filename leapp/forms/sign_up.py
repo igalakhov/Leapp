@@ -20,7 +20,8 @@ class SignUpForm(FlaskForm):
                                                  equal_to('password', 'Your passwords should probably be the same'),
                                                  length(7, 127)])
 
-    email = EmailField('Email:')
+    email = EmailField('Email:', validators=[input_required('This field is required.'),
+                                             length(7, 127)])
     email_confirm = BooleanField('Sign me up for an occasional email about current and future plans',
                                  default=True)
 

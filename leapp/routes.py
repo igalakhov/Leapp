@@ -47,3 +47,10 @@ def signup():
     return render_template('sign_up.html',
                            title='Sign Up',
                            sign_up_form=form)
+
+
+@thing.route('/login', methods=["GET", "POST"])
+def log_in():
+
+    return render_template('log_in.html',
+                           title='Log In')
