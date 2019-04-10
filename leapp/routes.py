@@ -1,18 +1,20 @@
-from flask import Flask, render_template, flash, redirect
+from flask import Flask, render_template, flash, redirect, Blueprint
 from leapp.forms.sign_up import SignUpForm
 from leapp.models.models import User
 from leapp.models import db
-from leapp import app
 
 
-@app.route('/')
-@app.route('/index')
+thing = Blueprint('thing', __name__)
+
+
+@thing.route('/')
+@thing.route('/index')
 def index():
     return render_template('index.html',
                            title='LEΛPP')
 
 
-@app.route('/signup', methods=['GET', 'POST'])
+@thing.route('/signup', methods=['GET', 'POST'])
 def signup():
     form = SignUpForm()
 
@@ -20,7 +22,6 @@ def signup():
 
     if form.validate_on_submit():
         # everything is fine, possibly make a new account
-        flash('cool form dude', 'success')
 
         if len(User.query.filter_by(email=form.email.data).all()) > 0:
             flash('An account with this email already exists.', 'danger')
