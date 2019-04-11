@@ -5,17 +5,17 @@ from app.models.models import User
 from app.models import db
 
 
-thing = Blueprint('thing', __name__)
+public_views = Blueprint('thing', __name__)
 
 
-@thing.route('/')
-@thing.route('/index')
+@public_views.route('/')
+@public_views.route('/index')
 def index():
     return render_template('index.html',
                            title='LEΛPP')
 
 
-@thing.route('/signup', methods=['GET', 'POST'])
+@public_views.route('/signup', methods=['GET', 'POST'])
 def signup():
     form = SignUpForm()
 
@@ -51,7 +51,7 @@ def signup():
                            sign_up_form=form)
 
 
-@thing.route('/login', methods=["GET", "POST"])
+@public_views.route('/login', methods=["GET", "POST"])
 def log_in():
     form = LogInForm()
 

@@ -1,7 +1,7 @@
 from config import *
 from app.models import db
 from flask import Flask
-from app.routes import thing
+from app.views.public.views import public_views
 from flask_migrate import Migrate
 from flask_session import Session
 
@@ -22,4 +22,4 @@ migrate = Migrate(app, db)
 session = Session(app)
 
 
-app.register_blueprint(thing)
+app.register_blueprint(public_views)
