@@ -1,11 +1,12 @@
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin
 from passlib.hash import bcrypt
 
 db = SQLAlchemy()
 
 
 # User class
-class User(db.Model):
+class User(UserMixin, db.Model):
 
     # single fields
     id = db.Column(db.Integer, primary_key=True)
@@ -27,4 +28,7 @@ class User(db.Model):
         return bcrypt.verify(password, self.password)
 
     def __repr__(self):
+        return '<User %r>' % self.email
+
+    def __str__(self):
         return '<User %r>' % self.email
